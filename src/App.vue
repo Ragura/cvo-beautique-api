@@ -1,31 +1,56 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <app-header />
+    <transition name="fade" mode="out-in">
+      <router-view class="inhoud" />
+    </transition>
   </div>
 </template>
 
+<script>
+import AppHeader from "./components/AppHeader.vue";
+
+export default {
+  components: {
+    AppHeader
+  }
+}
+</script>
+
+
+
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+html {
+  font: 62.5% 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+body {
+  font-size: 1.6rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.inhoud {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding: 4rem;
+    padding-top: 8rem;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.2s ease;
 }
 </style>
