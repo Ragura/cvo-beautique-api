@@ -1,21 +1,21 @@
 <template>
     <main class="contact">
         <h1>Contacteer ons</h1>
-        <form @submit.prevent>
+        <form action="https://mailthis.to/ragura@gmail.com" method="POST">
             <div class="input-groep">
                 <label for="naam">Uw naam:</label>
-                <input id="naam" type="text">                
+                <input id="naam" name="naam" type="text">                
             </div>
 
             <div class="input-groep">
                 <label for="email">Uw emailadres:</label>
-                <input id="email" type="email">                
+                <input id="email" name="email" type="email">                
             </div>
 
             <label for="naam">Uw vraag:</label>
-            <textarea id="vraag" rows="10" ></textarea>
+            <textarea id="vraag" name="vraag" rows="10" ></textarea>
 
-            <button>Verzenden</button>          
+            <button type="submit">Verzenden</button>          
         </form>
     </main>
 </template>

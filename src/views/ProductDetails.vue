@@ -1,6 +1,9 @@
 <template>
     <div class="product-details">
         <div class="product-container">
+            <h4 class="terug">
+                <span @click="$router.go(-1)">&lt; Terug</span>
+            </h4>
             <div class="product-afbeelding">
                 <img :src="maakAfbeeldingUrl(huidigProduct)" :alt="huidigProduct.naam">
             </div>
@@ -48,6 +51,16 @@ export default {
 .product-container {
     max-width: 1180px;
     width: 1000px;
+}
+
+.terug {
+    color: #8FD5B5;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+}
+
+.terug span {
+    cursor: pointer;
 }
 
 .product-afbeelding {
