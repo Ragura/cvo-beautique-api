@@ -1,17 +1,20 @@
 <template>
     <div class="product-details">
+        <h4 class="terug">
+            <span @click="$router.go(-1)">&lt; Terug</span>
+        </h4>
         <div class="product-container">
-            <h4 class="terug">
-                <span @click="$router.go(-1)">&lt; Terug</span>
-            </h4>
             <div class="product-afbeelding">
                 <img :src="maakAfbeeldingUrl(huidigProduct)" :alt="huidigProduct.naam">
             </div>
-            <div class="product-gegevens">
-                <h2 class="product-titel">{{ huidigProduct.naam }}</h2>
-                <p class="product-beschrijving">{{ huidigProduct.beschrijving }}</p>
-                <p class="product-prijs">€ {{ huidigProduct.prijs }}</p>
-                <button>Leg in Winkelmand</button>
+            <div class="product-gegevens-container">
+                <!-- Container bestaat omdat CSS Grid alle kolommen van een rij even groot maakt -->
+                <div class="product-gegevens">
+                    <h2 class="product-titel">{{ huidigProduct.naam }}</h2>
+                    <p class="product-beschrijving">{{ huidigProduct.beschrijving }}</p>
+                    <p class="product-prijs">€ {{ huidigProduct.prijs }}</p>
+                    <button>Leg in Winkelmand</button>
+                </div>
             </div>
         </div>
     </div>
@@ -43,14 +46,19 @@ export default {
 </script>
 
 <style scoped>
-.product-details {
-    display: flex;
+
+.product-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 450px));
+    grid-column-gap: 40px;
     justify-content: center;
 }
 
-.product-container {
-    max-width: 1180px;
-    width: 1000px;
+@media screen and (max-width: 640px) {
+    .product-container {
+        display: block;
+    }
 }
 
 .terug {
@@ -64,29 +72,20 @@ export default {
 }
 
 .product-afbeelding {
-    display: inline-block;
-    width: 55%;
-    margin-right: 10%;
+    text-align: center;
 }
 .product-afbeelding img {
     max-width: 100%;
 }
 
 .product-gegevens {
-    display: inline-block;
-    width: 35%;
     background-color: #8FD5B5;
     color: white;
-    vertical-align: top;
     padding: 2.5rem;
 }
 
 .product-titel {
     font-size: 2.5rem;
-}
-
-.product-beschrijving {
-
 }
 
 .product-prijs {
