@@ -24,13 +24,14 @@
 </template>
 
 <script>
-import { producten, categories } from "@/producten.js";
+import { categories } from "@/producten.js";
+import axios from 'axios';
 
 export default {
     data() {
         return {
             categories: ["Alles", ...categories],
-            producten,
+            producten: [],
             baseUrl: process.env.BASE_URL,
             gekozenCategorie: ""
         }
@@ -50,6 +51,10 @@ export default {
         }
     },
     created() {
+        axios
+            .get('http://localhost:3333/producten')
+            .then(response => (this.producten = response.data))
+        
         this.gekozenCategorie = this.categories[0];
     }
 }
